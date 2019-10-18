@@ -1,0 +1,77 @@
+<style>
+    :host {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .main {
+        width: 1000px;
+        margin: 0px auto;
+    }
+
+    h1 {
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 8px 0;
+
+    }
+
+    th {
+        background-color: gray;
+        color: white;
+        width: 250px;
+        padding: 10px;
+    }
+    
+    td {
+        text-align: center;
+    }
+
+    input {
+        width: 80px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .header {
+        background-color: rgb(156, 156, 253);
+
+    }
+    table {
+        margin: 0px auto;
+    }
+</style>
+
+
+
+<div class="main">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Actions Available</th>
+        </tr>
+        <tr *ngFor='let object of myObjects'>
+            <td>{{object._id}}</td>
+            <td>{{object.name}}</td>
+            <td>{{object.qty}}</td>
+            <td>${{object.price}}</td>
+            <td><button  routerLink="/products/{{object._id}}/edit" value='EDIT'>EDIT</button> <button  routerLink="/products/{{object._id}}" value='VIEW'>DETAILS</button>   </td>
+        </tr>
+    </table>
+</div>
+

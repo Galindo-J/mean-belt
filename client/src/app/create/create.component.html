@@ -1,0 +1,70 @@
+<style>
+    .main {
+        width: 1000px;
+        margin: 0px auto;
+    }
+
+    .leftSide {
+        width: 450px;
+        background-color: rgb(190, 253, 255);
+        display: inline-block;
+        padding: 20px; 
+        border: 2px solid black;
+
+    }
+    .rightSide {
+        width: 450px;
+        display: inline-block;
+        vertical-align: top;
+        padding: 20px; 
+        color: red;
+    }
+
+    input,
+    textarea,
+    label {
+        width: 350px;
+        margin: 10px;
+    }
+
+    button {
+        margin: 10px;
+    }
+
+    h1 {
+        color: rgb(122, 122, 122);
+        padding: 10px;
+    }
+
+    h3 {
+        color: red; 
+    }
+</style>
+
+<div class="main">
+    <h1>NEW PRODUCT</h1>
+    <!-- <h3 *ngIf="titleMessage == true"> Please Submit a Complete Form </h3> -->
+
+    <div class='leftSide'>
+        <form (submit)='submitForm()'>
+            <label>Name:</label><br>
+            <input type='text' name="myobj.name" [(ngModel)]="myobj.name"><br>
+            <label>Qty:</label><br>
+            <input type='text' name="myobj.qty" [(ngModel)]="myobj.qty"><br>
+            <label>Price:</label><br>
+            <input type='text' name="myobj.price" [(ngModel)]="myobj.price"><br>
+            <button type='submit' [disabled]='myobj.name.length < 3 || myobj.qty.length < 1 || myobj.price.length < 1 || myobj.price <= 0' value='SUBMIT OBJECT'>SUBMIT</button>
+            <button type='button' (click)='resetForm()' value='RESET'>RESET</button>
+        </form>
+    </div>
+    <div class='rightSide'>
+        <div class="error">
+            <p *ngIf="myobj.name.length < 0">A name is required</p>
+            <p *ngIf="myobj.name.length < 3 && myobj.name.length > 0">Your name is too short</p>
+            <p *ngIf="myobj.qty.length < 0" >A Quantity is required</p>
+            <p *ngIf="myobj.qty < 0" >Quantity must be 0 or more</p>
+            <p *ngIf="myobj.price.length < 0" >A price is required </p>
+            <p *ngIf="myobj.price < 0"> Price must be more than $0!</p>
+        </div>
+    </div>
+</div>

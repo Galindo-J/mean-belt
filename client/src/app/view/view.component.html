@@ -1,0 +1,81 @@
+<style>
+    .main {
+        width: 1000px;
+        margin: 0px auto;
+    }
+
+    .leftSide {
+        width: 450px;
+        background-color: rgb(190, 253, 255);
+        display: inline-block;
+        padding: 20px;
+        border: 2px solid black;
+
+    }
+
+    .rightSide {
+        width: 450px;
+        display: inline-block;
+        vertical-align: top;
+        padding: 20px;
+        color: red;
+    }
+
+    input,
+    textarea,
+    label {
+        width: 350px;
+        margin: 10px;
+    }
+
+    button {
+        margin: 10px;
+    }
+
+    h1 {
+        color: rgb(122, 122, 122);
+        padding: 10px;
+    }
+
+    h2 {
+        color: red;
+        padding: 10px;
+    }
+
+    h3 {
+        display: inline-block;
+    }
+
+    h4 {
+        display: inline-block;
+        margin-left: 40px;
+    }
+
+    span {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="main">
+    <h1>PRODUCT DETAILS</h1>
+    <h2 *ngIf='this.errorMessage == true'>To delete a product, the Qty must be <span>0</span>.</h2>
+    <div class='leftSide'>
+        <h3>Name:</h3>
+        <h4>{{myobj.name}}</h4><br>
+        <h3>Qty:</h3>
+        <h4>{{myobj.qty}}</h4><br>
+        <h3>Price:</h3>
+        <h4>{{myobj.price}}</h4><br>
+        <form (submit)="deleteClick(myobj._id)">
+            <button type='submit' [disabled]='messageTitle == false'>DELETE</button>
+            <button [routerLink]="['/']" value='INDEX'>BACK</button>
+        </form>
+    </div>
+</div>
+<!-- <div class="main">
+    <h1>AUTHOR</h1>
+    <h3>{{myobj.name}}</h3>
+    <h3>{{myobj.desc}}</h3>
+
+    <button routerLink="/edit/{{myobj._id}}" value='EDIT'>EDIT</button>
+</div> -->
